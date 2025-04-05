@@ -1,46 +1,86 @@
-# Getting Started with Create React App
+# ProctorEd - Web-Based Proctored Testing Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A comprehensive web-based proctored testing platform similar to HackerEarth or HackerRank for educational institutions to conduct secure online assessments.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### User Registration System
+- Collects candidate information including full name, email, phone number, university, student ID, and course enrollment
+- Secure authentication system
+- Photo ID upload for identity verification
 
-### `npm start`
+### Proctoring Security Features
+- Full-screen lockdown mode that prevents users from exiting during the test
+- Camera access functionality that takes periodic snapshots to verify candidate's identity
+- Microphone monitoring to detect suspicious conversations
+- Tab/window switching detection and logging
+- Copy-paste restrictions for all test content
+- Keyboard shortcut blocking for common cheating methods
+- Suspicious activity logging with timestamps
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Test Administration
+- Intuitive test creator interface for instructors
+- Support for multiple question types (multiple choice, coding, short answer)
+- Time-tracking system with configurable test duration
+- Auto-submission function when time expires
+- Randomized question bank feature
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Technical Implementation
+- Built using React for the frontend with responsive design
+- Uses WebRTC for camera and microphone access
+- Comprehensive consent screens for privacy permissions
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
+```
+git clone https://github.com/yourusername/proctored-test-app.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies:
+```
+cd proctored-test-app
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Start the development server:
+```
+npm start
+```
 
-### `npm run eject`
+4. Open your browser and navigate to `http://localhost:3000`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Demo Accounts
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+For demo purposes, you can use the following accounts:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Student Account
+- Email: student@example.com
+- Password: password
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Instructor Account
+- Email: instructor@example.com
+- Password: password
 
-## Learn More
+## Security Features Explanation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Full-screen Enforcement
+The application uses the Fullscreen API to force the test window into full-screen mode. If the user exits full-screen mode, it's logged as a violation and can be configured to automatically submit the test.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Camera/Microphone Monitoring
+- Uses WebRTC to access the user's camera and microphone
+- Takes periodic snapshots (every 30 seconds by default) to verify the student's identity
+- Monitors audio levels to detect conversations or unusual sounds
+- All media is processed with proper consent from the user
+
+### Tab-switching Detection
+Uses the Document Visibility API (document.visibilitychange event) to detect when the user switches to another tab or window, logging it as a potential violation.
+
+## License
+MIT License
